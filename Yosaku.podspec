@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
                        * Yosaku uses UITableView for displaying log messages.
                        DESC
   s.homepage         = "https://github.com/sgr/Yosaku"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.screenshots      = "https://github.com/sgr/Yosaku/raw/master/iPhone_portrait.PNG", "https://github.com/sgr/Yosaku/raw/master/iPhone_landscape.PNG", "https://github.com/sgr/Yosaku/raw/master/iPad_portrait.PNG", "https://github.com/sgr/Yosaku/raw/master/iPad_landscape.PNG"
   s.license          = 'MIT'
   s.author           = "Shigeru Fujiwara"
   s.source           = { :git => "https://github.com/sgr/Yosaku.git", :tag => s.version.to_s }
