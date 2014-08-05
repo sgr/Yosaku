@@ -30,6 +30,6 @@ SPEC CHECKSUMS:
   Expecta+Snapshots: 30c28e3d8104665ee70e32df1cfc030bb37a8a6c
   FBSnapshotTestCase: 9053afee1d66b4c7c313fcb0ae582a5e47bea9d0
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
-  Yosaku: 13e37a0d9ddfb502ec9034f680c76111941fe470
+  Yosaku: f8d7d69f876ec8552f5740fa6c548a91ffaea032
 
 COCOAPODS: 0.33.1
