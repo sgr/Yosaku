@@ -2,19 +2,22 @@
 //  YSLogger.h
 //  Pods
 //
-//  Created by 藤原 滋 on 2014/08/04.
+//  Created by Shigeru Fujiwara on 2014/08/04.
 //
 //
 
 #import <UIKit/UIKit.h>
 #import "DDLog.h"
 
-extern const float kUpdateIntervalSec;
+extern const float YSDefaultUpdateIntervalSec;
+extern const int YSDefaultCapacity;
 
 @interface YSLogger : DDAbstractLogger <DDLogger, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) UITableView* tableView;
 @property (nonatomic) float updateIntervalSec;
+
+@property (nonatomic, readonly) NSUInteger countOfLogMessages;
 
 - (instancetype)initWithCapacity:(NSUInteger)capacity dateFormatter:(NSDateFormatter*)formatter;
 

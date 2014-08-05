@@ -2,15 +2,16 @@
 //  YSLogger.m
 //  Pods
 //
-//  Created by 藤原 滋 on 2014/08/04.
+//  Created by Shigeru Fujiwara on 2014/08/04.
 //
 //
 
 #import "YSLogger.h"
 #import "LogTableViewCell.h"
 
-const float kUpdateIntervalSec = 3.0f;
-NSString* const kCellReuseIdentifier = @"LogCell";
+const float YSDefaultUpdateIntervalSec = 3.0f;
+const int YSDefaultCapacity = 50;
+NSString* const YSCellReuseIdentifier = @"LogCell";
 
 @implementation YSLogger {
     NSUInteger _capacity;
@@ -28,13 +29,13 @@ NSString* const kCellReuseIdentifier = @"LogCell";
 {
     self = [super init];
     if (self) {
-        _capacity = capacity > 0 ? capacity : 50;
+        _capacity = capacity > 0 ? capacity : YSDefaultCapacity;
         _buf = [NSMutableArray arrayWithCapacity:_capacity];
-        _queue = dispatch_queue_create("org.cocoapods.sgr.yosaku.Queue", DISPATCH_QUEUE_SERIAL);
+        _queue = dispatch_queue_create("org.cocoapods.sgr.yosaku.Logging", DISPATCH_QUEUE_SERIAL);
         _tableSource = [NSMutableArray arrayWithCapacity:_capacity];
         _currIndex = NSNotFound;
 
-        _updateIntervalSec = kUpdateIntervalSec;
+        _updateIntervalSec = YSDefaultUpdateIntervalSec;
 
         _refreshControl = [[UIRefreshControl alloc] init];
         [_refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -52,9 +53,7 @@ NSString* const kCellReuseIdentifier = @"LogCell";
 
 - (void)dealloc
 {
-    if (_syncTimer) {
-        dispatch_source_cancel(_syncTimer);
-    }
+    [self stopSyncTimer];
     _queue = nil;
     _buf = nil;
     _tableSource = nil;
@@ -68,6 +67,7 @@ NSString* const kCellReuseIdentifier = @"LogCell";
 
 - (void)setTableView:(UITableView *)tableView
 {
+    [self stopSyncTimer];
     if (_refreshControl) {
         [_refreshControl removeFromSuperview];
     }
@@ -76,20 +76,17 @@ NSString* const kCellReuseIdentifier = @"LogCell";
         _tableView.delegate = nil;
         _tableView = nil;
         _cell = nil;
-        if (_syncTimer) {
-            dispatch_source_cancel(_syncTimer);
-        }
     }
 
     _tableView = tableView;
     if (_tableView) {
         _tableView.allowsSelection = NO;
         UINib *nib = [UINib nibWithNibName:@"LogTableViewCell" bundle:nil];
-        [_tableView registerNib:nib forCellReuseIdentifier:kCellReuseIdentifier];
+        [_tableView registerNib:nib forCellReuseIdentifier:YSCellReuseIdentifier];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         [_tableView addSubview:_refreshControl];
-        _cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier];
+        _cell = [tableView dequeueReusableCellWithIdentifier:YSCellReuseIdentifier];
         _cell.dateFormatter = _dateFormatter;
         [self startSyncTimer:_updateIntervalSec];
     }
@@ -98,10 +95,15 @@ NSString* const kCellReuseIdentifier = @"LogCell";
 - (void)setUpdateIntervalSec:(float)updateIntervalSec
 {
     _updateIntervalSec = updateIntervalSec;
-    if (_syncTimer) {
-        dispatch_source_cancel(_syncTimer);
+    [self stopSyncTimer];
+    if (_tableView) {
         [self startSyncTimer:_updateIntervalSec];
     }
+}
+
+- (NSUInteger)countOfLogMessages
+{
+    return _buf.count;
 }
 
 #pragma mark - for sync UIViewController's life cycle
@@ -122,9 +124,7 @@ NSString* const kCellReuseIdentifier = @"LogCell";
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    if (_syncTimer) {
-        dispatch_source_cancel(_syncTimer);
-    }
+    [self stopSyncTimer];
 }
 
 #pragma mark - UITableViewDelegate
@@ -141,7 +141,7 @@ NSString* const kCellReuseIdentifier = @"LogCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LogTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier forIndexPath:indexPath];
+    LogTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:YSCellReuseIdentifier forIndexPath:indexPath];
     cell.dateFormatter = _dateFormatter;
     DDLogMessage* lm = _tableSource[indexPath.row];
     cell.logMessage = lm;
@@ -201,12 +201,19 @@ NSString* const kCellReuseIdentifier = @"LogCell";
     }
 }
 
+- (void)stopSyncTimer
+{
+    if (_syncTimer) {
+        dispatch_source_cancel(_syncTimer);
+    }
+}
+
 - (void)syncTableSource
 {
     @synchronized(_buf) {
         if (_currIndex != 0 && _buf.count > 0) {
             if (_currIndex == NSNotFound) {
-                // 全置き換え
+                // replace all rows
                 NSMutableArray* delPaths = [NSMutableArray array];
                 for (NSInteger i = 0; i < _tableSource.count; i++) {
                     [delPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
@@ -222,7 +229,7 @@ NSString* const kCellReuseIdentifier = @"LogCell";
             } else {
                 NSInteger delNum = _currIndex + _tableSource.count - _capacity;
                 if (delNum > 0) {
-                    // 削除
+                    // delete rows
                     NSInteger delLoc = _capacity - _currIndex; // _tableSource.count - delNum
                     NSIndexSet* iset = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(delLoc, delNum)];
                     NSMutableArray* delPaths = [NSMutableArray array];
@@ -233,7 +240,7 @@ NSString* const kCellReuseIdentifier = @"LogCell";
                     [_tableView deleteRowsAtIndexPaths:delPaths withRowAnimation:NO];
                 }
                 
-                // 挿入
+                // insert rows
                 NSMutableArray* insPaths = [NSMutableArray array];
                 for (NSInteger i = 0; i < _currIndex; i++) {
                     [insPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];

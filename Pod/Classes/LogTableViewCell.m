@@ -2,7 +2,7 @@
 //  LogCellTableViewCell.m
 //  Yosaku
 //
-//  Created by 藤原 滋 on 2014/08/03.
+//  Created by Shigeru Fujiwara on 2014/08/03.
 //  Copyright (c) 2014年 Shigeru Fujiwara. All rights reserved.
 //
 

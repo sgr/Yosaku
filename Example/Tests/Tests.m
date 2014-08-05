@@ -6,38 +6,21 @@
 //  Copyright (c) 2014 Shigeru Fujiwara. All rights reserved.
 //
 
-SpecBegin(InitialSpecs)
+#import <YSLogger.h>
+static const int ddLogLevel = LOG_LEVEL_DEBUG;
 
-describe(@"these will fail", ^{
+SpecBegin(YSLogger)
 
-    it(@"can do maths", ^{
-        expect(1).to.equal(2);
+describe(@"consistency test", ^{
+    YSLogger* logger = [[YSLogger alloc] initWithCapacity:10 dateFormatter:nil];
+    [DDLog addLogger:logger];
+    for (int i = 0; i < 15; i++) {
+        DDLogDebug(@"test log (%d)", i);
+    }
+    it(@"don't over capacity", ^{
+        expect(logger.countOfLogMessages).to.equal(10);
     });
-
-    it(@"can read", ^{
-        expect(@"number").to.equal(@"string");
-    });
-    
-    it(@"will wait and fail", ^AsyncBlock {
-        
-    });
-});
-
-describe(@"these will pass", ^{
-    
-    it(@"can do maths", ^{
-        expect(1).beLessThan(23);
-    });
-    
-    it(@"can read", ^{
-        expect(@"team").toNot.contain(@"I");
-    });
-    
-    it(@"will wait and succeed", ^AsyncBlock {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            done();
-        });
-    });
+    [DDLog removeLogger:logger];
 });
 
 SpecEnd
