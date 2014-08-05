@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YSViewController : UIViewController
+@interface YSPhoneViewController : UIViewController
 
 @end

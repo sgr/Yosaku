@@ -20,7 +20,7 @@ it, simply add the following line to your Podfile:
 
 ## Author
 
-Shigeru Fujiwara, sgr0502@gmail.com
+Shigeru Fujiwara
 
 ## License
 

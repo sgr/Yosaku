@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YSLogger.h>
 
 @interface YSAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic) YSLogger* logger;
 
 @end

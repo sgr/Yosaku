@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="84" id="KGk-i7-Jjw" customClass="LogTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VERBOSE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7k6-JO-OWT" userLabel="Level">
+                        <rect key="frame" x="7" y="5" width="59" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.14047938330000001" green="0.032329259559999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="59" id="Ta6-gU-m02"/>
+                            <constraint firstAttribute="height" constant="18" id="j8i-kZ-awX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yosaku.m (115) connectToYosaku:withArg:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpe-bH-u5G" userLabel="FunctionName">
+                        <rect key="frame" x="74" y="5" width="231" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yosakuサービスに接続中 (12, 989, 790) " lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="285" translatesAutoresizingMaskIntoConstraints="NO" id="fIr-KP-Wdi" userLabel="Message">
+                        <rect key="frame" x="20" y="28" width="285" height="29"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014/12/31 23:59:59.450" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GyN-PS-rXm" userLabel="Date">
+                        <rect key="frame" x="53" y="62" width="252" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="9Ag-dv-533"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fIr-KP-Wdi" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailing" constant="-15" id="2iQ-1e-mVb"/>
+                    <constraint firstItem="GyN-PS-rXm" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottom" constant="-5" id="FZ3-zL-GGs"/>
+                    <constraint firstItem="xpe-bH-u5G" firstAttribute="baseline" secondItem="7k6-JO-OWT" secondAttribute="baseline" id="Gf2-jh-vNS"/>
+                    <constraint firstItem="7k6-JO-OWT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7" id="MnE-eI-RdT"/>
+                    <constraint firstItem="fIr-KP-Wdi" firstAttribute="bottom" secondItem="GyN-PS-rXm" secondAttribute="top" constant="-5" id="S61-ef-E8W"/>
+                    <constraint firstItem="fIr-KP-Wdi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="b14-bR-5x2"/>
+                    <constraint firstItem="GyN-PS-rXm" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailing" constant="-15" id="bUJ-GV-e7x"/>
+                    <constraint firstItem="fIr-KP-Wdi" firstAttribute="top" secondItem="7k6-JO-OWT" secondAttribute="bottom" constant="5" id="fj6-wk-mfw"/>
+                    <constraint firstItem="GyN-PS-rXm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="53" id="ghx-8C-IHP"/>
+                    <constraint firstItem="xpe-bH-u5G" firstAttribute="height" secondItem="7k6-JO-OWT" secondAttribute="height" id="nI6-iN-epg"/>
+                    <constraint firstItem="7k6-JO-OWT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="pAP-DP-LjC"/>
+                    <constraint firstItem="xpe-bH-u5G" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailing" constant="-15" id="uUm-KE-ukY"/>
+                    <constraint firstItem="xpe-bH-u5G" firstAttribute="leading" secondItem="7k6-JO-OWT" secondAttribute="trailing" constant="8" id="zGI-ae-frl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="labelDate" destination="GyN-PS-rXm" id="Yn7-ID-fiD"/>
+                <outlet property="labelFunctionName" destination="xpe-bH-u5G" id="WDF-fP-bEz"/>
+                <outlet property="labelLevel" destination="7k6-JO-OWT" id="Y1z-vK-mFW"/>
+                <outlet property="labelMessage" destination="fIr-KP-Wdi" id="OCb-nA-KWm"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

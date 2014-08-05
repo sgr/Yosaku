@@ -10,27 +10,26 @@
 Pod::Spec.new do |s|
   s.name             = "Yosaku"
   s.version          = "0.1.0"
-  s.summary          = "A short description of Yosaku."
+  s.summary          = "A log viewer for Cocoa Touch."
   s.description      = <<-DESC
-                       An optional longer description of Yosaku
+                       A log viewer for Cocoa Touch.
 
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       * Yosaku depends on CocoaLumberjack.
+                       * Yosaku uses UITableView for displaying log messages.
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/Yosaku"
+  s.homepage         = "https://github.com/sgr/Yosaku"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
-  s.author           = { "Shigeru Fujiwara" => "sgr0502@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/Yosaku.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = "Shigeru Fujiwara"
+  s.source           = { :git => "https://github.com/sgr/Yosaku.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://www.google.com/+ShigeruFujiwara3'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes'
-  s.resources = 'Pod/Assets/*.png'
+  s.resources = 'Pod/Classes/*.xib'
+  s.public_header_files = 'Pod/Classes/YSLogger.h'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency "CocoaLumberjack"
 end

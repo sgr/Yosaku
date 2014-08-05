@@ -1,0 +1,35 @@
+PODS:
+  - CocoaLumberjack (1.9.1):
+    - CocoaLumberjack/Extensions
+  - CocoaLumberjack/Core (1.9.1)
+  - CocoaLumberjack/Extensions (1.9.1):
+    - CocoaLumberjack/Core
+  - Expecta (0.3.1)
+  - Expecta+Snapshots (1.2.1):
+    - Expecta
+    - FBSnapshotTestCase
+  - FBSnapshotTestCase (1.1)
+  - Specta (0.2.1)
+  - Yosaku (0.1.0):
+    - CocoaLumberjack
+
+DEPENDENCIES:
+  - Expecta
+  - Expecta+Snapshots
+  - FBSnapshotTestCase
+  - Specta (~> 0.2.1)
+  - Yosaku (from `../`)
+
+EXTERNAL SOURCES:
+  Yosaku:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: 94accd5749f5c5d15134c8d50f34a973aed8ef69
+  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
+  Expecta+Snapshots: 30c28e3d8104665ee70e32df1cfc030bb37a8a6c
+  FBSnapshotTestCase: 9053afee1d66b4c7c313fcb0ae582a5e47bea9d0
+  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+  Yosaku: 13e37a0d9ddfb502ec9034f680c76111941fe470
+
+COCOAPODS: 0.33.1
