@@ -9,6 +9,7 @@ Yosaku is a log viewer for Cocoa Touch.
 It depends on [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack).
 
 ![iPhone portrait screenshot](https://github.com/sgr/Yosaku/raw/master/iPhone_portrait.PNG "iPhone portrait screenshot")
+![iPad landspace screenshot](https://github.com/sgr/Yosaku/raw/master/iPad_landscape.PNG "iPad landspace screenshot")
 
 ## Usage
 
@@ -33,11 +34,10 @@ In the following example, YSLogger is initialized as a property of your applicat
 ```
 
 
-### Displaying Log
+### Displaying log messages
 
 Yosaku uses UITableView for displaying log records. You create an *empty* UITableView and set it to YSLogger.
-
-You must call `viewDidLoad`, `viewWillDisappear`, and `viewDidAppear` in your view controller's same name methods for synchronizing YSLogger's life cycle with your view controller's it.
+In the following example, UITableView is set to app.logger in your view controller's `viewDidLoad` method.
 
 ```objective-c
 - (void)viewDidLoad
@@ -60,6 +60,8 @@ You must call `viewDidLoad`, `viewWillDisappear`, and `viewDidAppear` in your vi
     [_app.logger viewDidAppear:animated];
 }
 ```
+
+You must call `viewDidLoad`, `viewWillDisappear`, and `viewDidAppear` in your view controller's same name methods for synchronizing YSLogger's life cycle with your view controller's it.
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
