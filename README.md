@@ -33,7 +33,6 @@ In the following example, YSLogger is initialized as a property of your applicat
 }
 ```
 
-
 ### Displaying log messages
 
 Yosaku uses UITableView for displaying log records. You create an *empty* UITableView and set it to YSLogger.
@@ -62,6 +61,8 @@ In the following example, UITableView is set to app.logger in your view controll
 ```
 
 You must call `viewDidLoad`, `viewWillDisappear`, and `viewDidAppear` in your view controller's same name methods for synchronizing YSLogger's life cycle with your view controller's it.
+
+# Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
