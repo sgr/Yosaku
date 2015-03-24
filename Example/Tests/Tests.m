@@ -7,7 +7,7 @@
 //
 
 #import <YSLogger.h>
-static const int ddLogLevel = LOG_LEVEL_DEBUG;
+static const DDLogLevel ddLogLevel = DDLogLevelDebug;
 
 SpecBegin(YSLogger)
 
