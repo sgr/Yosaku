@@ -8,8 +8,8 @@
 Yosaku is a log viewer for Cocoa Touch.
 It depends on [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack).
 
-![iPhone portrait screenshot](https://github.com/sgr/Yosaku/raw/master/iPhone_portrait.PNG "iPhone portrait screenshot")
-![iPhone landspace screenshot](https://github.com/sgr/Yosaku/raw/master/iPhone_landscape.PNG "iPhone landspace screenshot")
+![iPhone portrait screenshot](https://github.com/sgr/Yosaku/raw/master/Resources/iPhone_portrait.png "iPhone portrait screenshot")
+![iPhone landspace screenshot](https://github.com/sgr/Yosaku/raw/master/Resources/iPhone_landscape.png "iPhone landspace screenshot")
 
 ## Usage
 
