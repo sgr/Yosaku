@@ -68,6 +68,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+* CocoaLumberjack 1.x
 * XCode 5.1 or later
 * iOS 7 or later
 
