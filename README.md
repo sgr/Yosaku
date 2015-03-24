@@ -19,6 +19,8 @@ Yosaku provides YSLogger class as a DDLogger.
 In the following example, YSLogger is initialized as a property of your application delegate.
 
 ```objective-c
+#import <YSLogger.h>
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
