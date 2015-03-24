@@ -1,17 +1,20 @@
 PODS:
-  - CocoaLumberjack (1.9.2):
-    - CocoaLumberjack/Extensions (= 1.9.2)
-  - CocoaLumberjack/Core (1.9.2)
-  - CocoaLumberjack/Extensions (1.9.2):
+  - CocoaLumberjack (2.0.0):
+    - CocoaLumberjack/Default (= 2.0.0)
+    - CocoaLumberjack/Extensions (= 2.0.0)
+  - CocoaLumberjack/Core (2.0.0)
+  - CocoaLumberjack/Default (2.0.0):
     - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.0.0):
+    - CocoaLumberjack/Default
   - Expecta (0.3.2)
   - Expecta+Snapshots (1.3.2):
     - Expecta (~> 0.3)
     - FBSnapshotTestCase (= 1.6)
   - FBSnapshotTestCase (1.6)
   - Specta (0.2.1)
-  - Yosaku (0.1.1):
-    - CocoaLumberjack (~> 1.9)
+  - Yosaku (0.2.0):
+    - CocoaLumberjack (~> 2.0)
 
 DEPENDENCIES:
   - Expecta
@@ -25,11 +28,11 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
+  CocoaLumberjack: fd2b1031c6c4e0f08b5ea928ef677fa0a5de517d
   Expecta: ee641011fe10aa1855d487b40e4976dac50ec342
   Expecta+Snapshots: 40c5ec43b43da3bae957f14fed5dc9177d08ec8b
   FBSnapshotTestCase: 9d5fe43b29ae3a0ed8fc829477971b281038f748
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
-  Yosaku: bdeaa3741d96075b09793e348fe4f7c44e63fcc6
+  Yosaku: 5c75bc0fde1d20a34fd009b2ea07580651cf8a35
 
 COCOAPODS: 0.36.0

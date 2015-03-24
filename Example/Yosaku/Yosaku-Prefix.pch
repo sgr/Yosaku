@@ -15,9 +15,9 @@
     #import <Foundation/Foundation.h>
 #endif
 
-#import "DDLog.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #else
-static const int ddLogLevel = LOG_LEVEL_INFO;
+static const DDLogLevel ddLogLevel = DDLogLevelInfo;
 #endif

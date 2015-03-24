@@ -68,7 +68,6 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-* CocoaLumberjack 1.x
 * XCode 5.1 or later
 * iOS 7 or later
 
@@ -77,7 +76,14 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 Yosaku is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-    pod "Yosaku"
+
+```ruby
+    pod 'Yosaku', '~> 0.2.0' # for CocoaLumberjack 2.0.x
+```
+
+```ruby
+    pod 'Yosaku', '~> 0.1.1' # for CocoaLumberjack 1.9.x
+```
 
 ## Author
 

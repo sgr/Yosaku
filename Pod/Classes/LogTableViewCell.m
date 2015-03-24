@@ -15,10 +15,6 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *labelDate;
 @end
 
-char* fname(const char* filepath) {
-    return rindex(filepath, '/') + 1;
-}
-
 @implementation LogTableViewCell {
     NSDictionary* _labelMessageTextAttributes;
 }
@@ -41,35 +37,33 @@ char* fname(const char* filepath) {
 
 - (void)setLogMessage:(DDLogMessage *)logMessage
 {
-    switch (logMessage->logFlag) {
-        case LOG_FLAG_ERROR:
+    switch (logMessage.flag) {
+        case DDLogFlagError:
             _labelLevel.text = @"ERROR";
             _labelLevel.backgroundColor = [UIColor redColor];
             break;
-        case LOG_FLAG_WARN:
+        case DDLogFlagWarning:
             _labelLevel.text = @"WARN";
             _labelLevel.backgroundColor = [UIColor redColor];
             break;
-        case LOG_FLAG_INFO:
+        case DDLogFlagInfo:
             _labelLevel.text = @"INFO";
             _labelLevel.backgroundColor = [UIColor blueColor];
             break;
-        case LOG_FLAG_DEBUG:
+        case DDLogFlagDebug:
             _labelLevel.text = @"DEBUG";
             _labelLevel.backgroundColor = [UIColor colorWithRed:0.0 green:0.6 blue:0.0 alpha:1.0];
             break;
-        case LOG_FLAG_VERBOSE:
+        case DDLogFlagVerbose:
             _labelLevel.text = @"VERBOSE";
             _labelLevel.backgroundColor = [UIColor greenColor];
             break;
-        default:
-            _labelLevel.text = @"UNKNOWN";
-            _labelLevel.backgroundColor = [UIColor grayColor];
-            break;
     }
-    _labelFunctionName.text = [NSString stringWithFormat:@"%s (%d) %s", fname(logMessage->file), logMessage->lineNumber, logMessage->function];
-    _labelMessage.text = logMessage->logMsg;
-    _labelDate.text = [_dateFormatter stringFromDate:logMessage->timestamp];
+    NSString* fname = [[logMessage.file pathComponents] lastObject];
+
+    _labelFunctionName.text = [NSString stringWithFormat:@"%@ (%lu) %@", fname, (unsigned long)logMessage.line, logMessage.function];
+    _labelMessage.text = logMessage.message;
+    _labelDate.text = [_dateFormatter stringFromDate:logMessage.timestamp];
 }
 
 - (CGFloat)calcHeightAgainstWidth:(CGFloat)width

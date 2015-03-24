@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Yosaku'
-  s.version          = '0.1.1'
+  s.version          = '0.2.0'
   s.summary          = 'A log viewer for Cocoa Touch.'
   s.description      = <<-DESC
                        A log viewer for Cocoa Touch.
@@ -31,5 +31,5 @@ Pod::Spec.new do |s|
   s.resources = 'Pod/Classes/*.xib'
   s.public_header_files = 'Pod/Classes/YSLogger.h'
 
-  s.dependency 'CocoaLumberjack', '~> 1.9'
+  s.dependency 'CocoaLumberjack', '~> 2.0'
 end
